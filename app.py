@@ -194,4 +194,4 @@ st.markdown(footer, unsafe_allow_html=True)
 email_address = "20051110@kiit.ac.in"
 
 st.markdown('### Contact Us')
-st.markdown(f'<a href="mailto:{email_address}?Subject=Hello" target="_top">Click here</a>', unsafe_allow_html=True)
+st.markdown(f'<a href="mailto:{email_address}?Subject=Hello" target="_blank">Click here</a>', unsafe_allow_html=True)
