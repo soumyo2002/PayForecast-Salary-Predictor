@@ -45,15 +45,28 @@ def show_predict_page():
         "Master’s degree",
         "Post grad",
     )
+    
+    skill_levels = {
+        "Beginner",
+        "Advanced" ,
+        "Intermediate"
+    }
 
     country = st.selectbox("Country", countries)
     education = st.selectbox("Education Level", education)
-
     expericence = st.slider("Years of Experience", 0, 50, 3)
+    skill_level = st.selectbox("Skill Level", skill_levels)
+
+    if skill_level == "Beginner":
+        skill = 1
+    elif skill_level == "Intermediate":
+        skill = 2
+    else:
+        skill = 3
 
     ok = st.button("Calculate Salary")
     if ok:
-        X = np.array([[country, education, expericence ]])
+        X = np.array([[country, education, expericence, skill]])
         X[:, 0] = le_country.transform(X[:,0])
         X[:, 1] = le_education.transform(X[:,1])
         X = X.astype(float)
@@ -88,26 +101,6 @@ def clean_education(x):
         return 'Post grad'
     return 'Less than a Bachelors'
 
-
-# @st.cache_data
-# def load_data():
-#     df = pd.read_csv("processed_data.csv")
-#     df = df[["Country", "EdLevel", "YearsCodePro", "Employment", "ConvertedCompYearly"]]
-#     df = df[df["ConvertedCompYearly"].notnull()]
-#     df = df.dropna()
-#     df = df[df["Employment"] == "Employed full-time"]
-#     df = df.drop("Employment", axis=1)
-
-#     country_map = shorten_categories(df.Country.value_counts(), 400)
-#     df["Country"] = df["Country"].map(country_map)
-#     df = df[df["ConvertedCompYearly"] <= 250000]
-#     df = df[df["ConvertedCompYearly"] >= 10000]
-#     df = df[df["Country"] != "Other"]
-
-#     df["YearsCodePro"] = df["YearsCodePro"].apply(clean_experience)
-#     df["EdLevel"] = df["EdLevel"].apply(clean_education)
-#     df = df.rename({"ConvertedCompYearly": "Salary"}, axis=1)
-#     return df
 
 df = pd.read_csv("processed_data.csv")
 
