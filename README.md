@@ -46,4 +46,4 @@ streamlit run app.py
 Explore the power of predictive analytics with PayForecast. Unlock a new realm of salary projections and stay ahead of the curve in the competitive job market!
 
 ## Deployment Link
-https://salary-predictor-kiit-major-project.streamlit.app/
+https://payforecast-salary-predictor-major-project-kiit.streamlit.app/
